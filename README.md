@@ -1,10 +1,30 @@
 # SuperVentes
 
+Ce repo est le front-end du projet du module HMIN103 partie WEB.
+
+Il fait partie d'une architecture MEAN.
+
+## Installation d'Angular 10
+
+Angular nécessite d'avoir installé la version 12+ de [Node.Js](https://nodejs.org/).
+
+Dans un terminal, exécutez la commande suivante :
+```bash
+npm install -g @angular/cli
+```
+Ceci installera le client Angular 10.
+
+Ci-dessous, les informations qu'Angular a générées.
+
+Intellij Ultimate permet de ne pas utiliser certaines commandes ci-dessous (génération des commposants etc...)
+
+# Infos Angular
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --open` for a dev server. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
