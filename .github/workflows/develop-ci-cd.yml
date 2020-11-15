@@ -1,0 +1,44 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm run test:ci
+      - name: E2E
+        run: npm run e2e:ci
+      - name: Build app
+        run: npm run build:prod
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v2.x
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: 22
+          PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        with:
+          source: "./dist/SuperVentes/"
+          target: "/var/www/jesaispas/"
+          strip_components: 3
