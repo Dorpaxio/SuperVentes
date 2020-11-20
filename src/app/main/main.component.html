@@ -1,0 +1,14 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <div class="d-flex justify-content-between w-100">
+      <h1>SuperVentes</h1>
+      <div class="d-flex align-items-center">
+        <nb-icon icon="bulb" class="light-icon"></nb-icon>
+        <nb-toggle [(checked)]="isDark" (checkedChange)="switchTheme()" class="dark-toggle"></nb-toggle>
+      </div>
+    </div>
+  </nb-layout-header>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
