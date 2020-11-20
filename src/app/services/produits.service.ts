@@ -17,7 +17,15 @@ export class ProduitsService {
     return this.http.get<Produit[]>(this.apiEndpoint);
   }
 
+  getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiEndpoint + '/categories');
+  }
+
   addProduit(produit: Produit): Observable<Produit> {
     return this.http.post<Produit>(this.apiEndpoint, produit);
+  }
+
+  getProduit(id: string): Observable<Produit> {
+    return this.http.get<Produit>(this.apiEndpoint + '/' + id);
   }
 }
