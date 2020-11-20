@@ -135,6 +135,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SuperVentes"
+    }
+  },
+  "defaultProject": "SuperVentes",
+  "cli": {
+    "analytics": "53c7eca0-936b-4e82-bed7-105eaabd875c"
+  }
 }
