@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import Marque from '../models/Marque';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '@env/environment';
