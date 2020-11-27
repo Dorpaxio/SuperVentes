@@ -1,8 +1,18 @@
 <div class="d-flex justify-content-center">
   <div class="row w-100">
-    <nb-card class="produit-card col-sm-2" *ngFor="let produit of produits">
-      <nb-card-header>{{produit.nom}}</nb-card-header>
-      <nb-card-body>Une description là</nb-card-body>
+    <nb-card accent="info" class="produit-card col-sm-2" *ngFor="let produit of produits">
+      <nb-card-header class="produit-card-header">{{produit.nom}}</nb-card-header>
+      <nb-card-body>
+        <a class="produit-card-categorie" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">{{produit.categorie}}</a>
+        /
+        <a class="produit-card-type">{{produit.type}}</a>
+      </nb-card-body>
+      <nb-card-body>Une description de l'objet là mais on en a pas dans notre modèle  :(</nb-card-body>
+      <nb-card-footer>
+        <button nbButton status="success" class="produit-card-button">{{produit.prix}}€
+          <nb-icon icon="shopping-cart"></nb-icon>
+        </button>
+      </nb-card-footer>
     </nb-card>
   </div>
 </div>
