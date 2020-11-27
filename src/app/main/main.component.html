@@ -2,6 +2,11 @@
   <nb-layout-header fixed>
     <div class="d-flex justify-content-between w-100">
       <h1>SuperVentes</h1>
+      <div class="d-flex align-items-center navigation">
+        <a routerLink="/">Acceuil</a>
+        <a routerLink="/magasin">Magasin</a>
+        <a routerLink="/connexion">Se connecter</a>
+      </div>
       <div class="d-flex align-items-center">
         <nb-icon icon="bulb" class="light-icon"></nb-icon>
         <nb-toggle [(checked)]="isDark" (checkedChange)="switchTheme()" class="dark-toggle"></nb-toggle>
