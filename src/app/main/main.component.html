@@ -3,9 +3,12 @@
     <div class="d-flex justify-content-between w-100">
       <h1>SuperVentes</h1>
       <div class="d-flex align-items-center navigation">
-        <a routerLink="/">Acceuil</a>
-        <a routerLink="/magasin">Magasin</a>
-        <a routerLink="/connexion">Se connecter</a>
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Acceuil</a>
+        <a routerLink="/magasin" routerLinkActive="active-link">Magasin</a>
+        <a routerLink="/connexion" *ngIf="!connected">Se connecter</a>
+        <a routerLink="/mon-panier" *ngIf="connected" routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{exact: true}">Mon panier</a>
+        <a routerLink="/connexion" (click)="logout()" *ngIf="connected">Déconnexion</a>
       </div>
       <div class="d-flex align-items-center">
         <nb-icon icon="bulb" class="light-icon"></nb-icon>
