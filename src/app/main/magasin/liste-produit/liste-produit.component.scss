@@ -1,0 +1,16 @@
+.produit-card {
+  max-width: 300px;
+  min-width: 200px;
+  margin: 1rem;
+  transition: transform 200ms ease-out;
+}
+
+.produit-card:hover {
+  transform: scale(1.02);
+}
+
+@media screen and (max-width: 600px) {
+  .produit-card {
+    max-width: 100%;
+  }
+}
