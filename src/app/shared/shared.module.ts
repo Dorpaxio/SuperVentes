@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 import {NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbToastrModule, NbToastrService, NbToggleModule} from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from '@angular/common/http';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [TruncatePipe],
   imports: [
     CommonModule,
     NbLayoutModule,
@@ -27,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
     NbToggleModule,
     NbIconModule,
     NbButtonModule,
+    TruncatePipe,
   ]
 })
 export class SharedModule {

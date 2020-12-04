@@ -5,4 +5,5 @@ export default class Produit {
   type: string;
   prix: number;
   categorie: string;
+  description: string;
 }
