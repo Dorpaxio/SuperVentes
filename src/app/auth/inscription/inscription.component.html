@@ -1,0 +1,67 @@
+<nb-layout>
+  <nb-layout-column class="d-flex justify-content-center align-items-center">
+    <form class="w-100 d-flex justify-content-center" [formGroup]="form" (ngSubmit)="inscription()">
+      <nb-card accent="primary" class="w-50">
+        <nb-card-header>
+          <h2>Inscription</h2>
+        </nb-card-header>
+        <nb-card-body>
+          <label for="email">Email</label>
+          <nb-form-field class="mb-3">
+            <input id="email" nbInput status="primary" placeholder="email@example.com" fullWidth type="email"
+                   formControlName="email">
+          </nb-form-field>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="prenom">Prénom</label>
+              <nb-form-field>
+                <input id="prenom" nbInput status="primary" placeholder="Prénom" type="text" fullWidth
+                       formControlName="prenom">
+              </nb-form-field>
+            </div>
+            <div class="col-md-6">
+              <label for="nom">Nom</label>
+              <nb-form-field>
+                <input id="nom" nbInput status="primary" placeholder="Nom" type="text" fullWidth formControlName="nom">
+              </nb-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="mdp">Mot de passe</label>
+              <nb-form-field>
+                <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                  <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                           pack="eva"
+                           [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                  </nb-icon>
+                </button>
+                <input id="mdp" nbInput status="primary" placeholder="Votre mot de passe"
+                       [type]="showPassword ? 'text' : 'password'" fullWidth formControlName="password"
+                       (keyup)="checkPassword()">
+              </nb-form-field>
+            </div>
+            <div class="col-md-6">
+              <label for="mdp2">Retapez votre mot de passe</label>
+              <nb-form-field>
+                <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                  <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                           pack="eva"
+                           [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                  </nb-icon>
+                </button>
+                <input id="mdp2" nbInput [status]="passwordStatus" placeholder="Votre mot de passe"
+                       [type]="showPassword ? 'text' : 'password'" fullWidth formControlName="passwordCheck"
+                       (keyup)="checkPassword()">
+              </nb-form-field>
+            </div>
+          </div>
+        </nb-card-body>
+        <nb-card-footer class="d-flex justify-content-between align-items-center">
+          <button nbButton hero status="primary" type="submit">Inscription</button>
+          <small>Vous avez déjà un compte ? <a routerLink="/connexion">Connectez-vous</a></small>
+        </nb-card-footer>
+      </nb-card>
+    </form>
+  </nb-layout-column>
+</nb-layout>

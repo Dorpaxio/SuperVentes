@@ -1,0 +1,35 @@
+<nb-layout>
+  <nb-layout-column class="d-flex justify-content-center align-items-center">
+    <form class="w-100 d-flex justify-content-center" [formGroup]="form" (ngSubmit)="connexion()">
+      <nb-card accent="primary" class="w-50">
+        <nb-card-header>
+          <h2>Connexion</h2>
+        </nb-card-header>
+        <nb-card-body>
+          <label for="email">Email</label>
+          <nb-form-field class="mb-3">
+            <input id="email" nbInput [status]="email.value.length > 0 && email.invalid ? 'danger' : 'primary'"
+                   placeholder="email@example.com" fullWidth type="email"
+                   formControlName="email" required>
+          </nb-form-field>
+          <label for="mdp">Mot de passe</label>
+          <nb-form-field>
+            <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+              <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                       pack="eva"
+                       [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+              </nb-icon>
+            </button>
+            <input id="mdp" nbInput status="primary" placeholder="Votre mot de passe"
+                   [status]="password.value.length > 0 && password.invalid ? 'danger' : 'primary'"
+                   [type]="showPassword ? 'text' : 'password'" fullWidth formControlName="password" required>
+          </nb-form-field>
+        </nb-card-body>
+        <nb-card-footer class="d-flex justify-content-between align-items-center">
+          <button nbButton hero status="primary" type="submit" >Connexion</button>
+          <small>Vous n'avez pas de compte ? <a routerLink="/inscription">Inscrivez-vous</a></small>
+        </nb-card-footer>
+      </nb-card>
+    </form>
+  </nb-layout-column>
+</nb-layout>

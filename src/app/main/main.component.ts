@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeService} from '../services/theme.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,8 @@ export class MainComponent implements OnInit {
 
   isDark: boolean;
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -19,6 +21,14 @@ export class MainComponent implements OnInit {
 
   switchTheme(): void {
     this.themeService.switchTheme();
+  }
+
+  get connected(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 
 }
