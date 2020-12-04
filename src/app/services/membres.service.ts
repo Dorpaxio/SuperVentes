@@ -16,12 +16,4 @@ export class MembresService {
   getMembres(): Observable<Membre[]> {
     return this.http.get<Membre[]>(this.apiEndpoint);
   }
-
-  connexion(body: { email: string, password: string }): Observable<any> {
-    return this.http.post(this.apiEndpoint + '/connexion', body);
-  }
-
-  createCompte(body: { email: string, password: string, nom: string, prenom: string }): Observable<any> {
-    return this.http.post(this.apiEndpoint + '/inscription', body);
-  }
 }

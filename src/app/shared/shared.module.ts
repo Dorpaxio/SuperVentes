@@ -1,6 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbToastrModule, NbToastrService, NbToggleModule} from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbFormFieldModule,
+  NbIconModule,
+  NbInputModule,
+  NbLayoutModule,
+  NbToastrModule,
+  NbToggleModule
+} from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -11,22 +20,25 @@ import {HttpClientModule} from '@angular/common/http';
     CommonModule,
     NbLayoutModule,
     NbEvaIconsModule,
-    NbToastrModule,
+    NbToastrModule.forRoot({preventDuplicates: true}),
     NbCardModule,
     HttpClientModule,
     NbToggleModule,
     NbIconModule,
     NbButtonModule,
+    NbInputModule,
+    NbFormFieldModule,
   ],
   exports: [
     NbLayoutModule,
     NbEvaIconsModule,
-    NbToastrModule,
     NbCardModule,
     HttpClientModule,
     NbToggleModule,
     NbIconModule,
     NbButtonModule,
+    NbInputModule,
+    NbFormFieldModule
   ]
 })
 export class SharedModule {
