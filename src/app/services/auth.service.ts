@@ -68,9 +68,10 @@ export class AuthService {
   }
 
   register(body: { email: string, password: string, nom: string, prenom: string }): Observable<any> {
-    return this.http.post(this.apiEndpoint + '/inscription', body).pipe(
-      tap(this.setSession),
-      map(data => data.user)
-    );
+    return this.http.post(this.apiEndpoint + '/inscription', body)
+      .pipe(
+        tap(this.setSession),
+        map(data => data.user)
+      );
   }
 }
