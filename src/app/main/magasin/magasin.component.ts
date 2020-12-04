@@ -11,7 +11,6 @@ import Produit from '../../models/Produit';
 export class MagasinComponent implements OnInit {
 
   produits$: Observable<Produit[]>;
-
   constructor(private produitsService: ProduitsService) { }
 
   ngOnInit(): void {
