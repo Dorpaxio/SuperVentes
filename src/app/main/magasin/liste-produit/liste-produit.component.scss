@@ -8,6 +8,14 @@
   }
 }
 
+.produit-card .path {
+  margin-bottom: 0.5rem;
+}
+
+.produit-card .path a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 600px) {
   .produit-card {
     max-width: 100%;
