@@ -1,3 +1,5 @@
+import Produit from './Produit';
+
 export default class Membre {
   // tslint:disable-next-line:variable-name
   _id: string;
@@ -5,4 +7,8 @@ export default class Membre {
   prenom: string;
   email: string;
   password: string;
+  panier: {
+    produit: string | Produit;
+    quantity: number;
+  }[];
 }
