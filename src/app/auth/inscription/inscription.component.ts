@@ -67,9 +67,9 @@ export class InscriptionComponent implements OnInit {
       this.nbToastrService.danger('Vos deux mots de passe ne sont pas identiques', 'Inscription impossible');
       return;
     }
-    this.authService.register(this.form.value).pipe(
+    const {passwordCheck, ...body} = this.form.value;
+    this.authService.register(body).pipe(
       catchError(err => {
-        console.log(err.error);
         if (err.status === 400) {
           if (err.error.code === 'ME40006') {
             this.nbToastrService.danger('Cet email est déjà utilisé', 'Inscription impossible.');
@@ -85,7 +85,6 @@ export class InscriptionComponent implements OnInit {
             this.nbToastrService.danger('Une erreur inconnue est survenue.',
               'Inscription impossible.');
           }
-
         } else if (err.status === 409) {
           this.nbToastrService.danger('Votre mot de passe doit avoir plus de 8 caractères',
             'Mauvais identifiants');
