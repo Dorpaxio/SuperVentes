@@ -3,10 +3,17 @@
   min-width: 200px;
   margin: 1rem;
   transition: transform 200ms ease-out;
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
-.produit-card:hover {
-  transform: scale(1.02);
+.produit-card .path {
+  margin-bottom: 0.5rem;
+}
+
+.produit-card .path a {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -14,3 +21,18 @@
     max-width: 100%;
   }
 }
+
+.produit-card-header {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.produit-card-button {
+  float: right;
+  transition: transform 200ms ease-out!important;
+  &:hover {
+    transform: scale(1.1)!important;
+  }
+}
+
+

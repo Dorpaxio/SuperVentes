@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NbCardModule, NbIconModule, NbLayoutModule, NbToastrModule, NbToastrService, NbToggleModule} from '@nebular/theme';
+import {NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbToastrModule, NbToastrService, NbToggleModule} from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     NbToggleModule,
     NbIconModule,
+    NbButtonModule,
   ],
   exports: [
     NbLayoutModule,
@@ -25,6 +26,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     NbToggleModule,
     NbIconModule,
+    NbButtonModule,
   ]
 })
 export class SharedModule {
