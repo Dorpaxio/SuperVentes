@@ -1,0 +1,20 @@
+<h2>Mon panier</h2>
+
+<nb-card>
+  <nb-card-header class="row">
+    <div class="col-md-2">Nom du produit</div>
+    <div class="col-md-2">Type</div>
+    <div class="col-md-2">Catégorie</div>
+    <div class="col-md-3">Description</div>
+    <div class="col-md-1">Quantité</div>
+    <div class="col-md-2">Actions</div>
+  </nb-card-header>
+  <nb-card-body *ngFor="let element of panier" class="row">
+    <div class="col-md-2">{{element.produit.nom | titlecase}}</div>
+    <div class="col-md-2">{{element.produit.type}}</div>
+    <div class="col-md-2">{{element.produit.categorie}}</div>
+    <div class="col-md-3">{{element.produit.description | truncate : 45}}</div>
+    <div class="col-md-1">{{element.quantity}}</div>
+    <div class="col-md-2">Actions</div>
+  </nb-card-body>
+</nb-card>

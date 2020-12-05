@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from './main.component';
 import {MagasinComponent} from './magasin/magasin.component';
 import {AuthGuard} from '../guards/auth.guard';
+import {MonPanierComponent} from './mon-panier/mon-panier.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {path: 'magasin', component: MagasinComponent},
-      {path: 'mon-panier', component: MagasinComponent, canActivate: [AuthGuard]}
+      {path: 'mon-panier', component: MonPanierComponent, canActivate: [AuthGuard]}
     ]
   },
 ];

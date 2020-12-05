@@ -7,7 +7,8 @@
         <a routerLink="/magasin" routerLinkActive="active-link">Magasin</a>
         <a routerLink="/connexion" *ngIf="!connected">Se connecter</a>
         <a routerLink="/mon-panier" *ngIf="connected" routerLinkActive="active-link"
-           [routerLinkActiveOptions]="{exact: true}">Mon panier</a>
+           [routerLinkActiveOptions]="{exact: true}" [nbPopover]="popoverText" [nbPopoverPlacement]="'bottom'"
+           [nbPopoverTrigger]="'noop'">Mon panier</a>
         <a routerLink="/connexion" (click)="logout()" *ngIf="connected">Déconnexion</a>
       </div>
       <div class="d-flex align-items-center">

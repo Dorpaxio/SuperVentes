@@ -11,7 +11,7 @@
         {{produit.description | truncate : 100}}
       </nb-card-body>
       <nb-card-footer>
-        <button nbButton status="success" class="produit-card-button">{{produit.prix}}€
+        <button nbButton status="success" class="produit-card-button" (click)="addProduit(produit)">{{produit.prix}}€
           <nb-icon icon="shopping-cart"></nb-icon>
         </button>
       </nb-card-footer>

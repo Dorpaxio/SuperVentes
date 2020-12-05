@@ -6,7 +6,7 @@ import {
   NbFormFieldModule,
   NbIconModule,
   NbInputModule,
-  NbLayoutModule,
+  NbLayoutModule, NbPopoverModule,
   NbToastrModule,
   NbToggleModule
 } from '@nebular/theme';
@@ -29,6 +29,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     NbButtonModule,
     NbInputModule,
     NbFormFieldModule,
+    NbPopoverModule
   ],
   exports: [
     NbLayoutModule,
@@ -41,6 +42,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     TruncatePipe,
     NbInputModule,
     NbFormFieldModule,
+    NbPopoverModule
   ]
 })
 export class SharedModule {
