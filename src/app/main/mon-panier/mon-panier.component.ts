@@ -29,9 +29,9 @@ export class MonPanierComponent implements OnInit {
         })
       )
       .subscribe(data => {
-        const promises: Promise<{produit: Produit, quantity: number}>[] = [];
+        const promises: Promise<{ produit: Produit, quantity: number }>[] = [];
         for (const el of data) {
-          promises.push(new Promise<{produit: Produit, quantity: number}>((resolve, reject) => {
+          promises.push(new Promise<{ produit: Produit, quantity: number }>((resolve, reject) => {
             if (typeof el.produit === 'string') {
               this.produitsService.getProduit(el.produit).subscribe(produit => {
                 resolve({produit, quantity: el.quantity});
@@ -57,8 +57,17 @@ export class MonPanierComponent implements OnInit {
         })
       )
       .subscribe(() => {
+        this.panier = [];
         this.nbToastrService.success('Votre panier a bien été vidé.', 'Panier vidé');
       });
+  }
+
+  get isPanierSet(): boolean {
+    return this.panier !== undefined;
+  }
+
+  get isPanierEmpty(): boolean {
+    return this.panier.length === 0;
   }
 
 }

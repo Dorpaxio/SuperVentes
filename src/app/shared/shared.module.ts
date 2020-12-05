@@ -6,17 +6,18 @@ import {
   NbFormFieldModule,
   NbIconModule,
   NbInputModule,
-  NbLayoutModule, NbPopoverModule,
+  NbLayoutModule, NbPopoverModule, NbSpinnerModule,
   NbToastrModule,
   NbToggleModule
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from '@angular/common/http';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { MontantTotalPipe } from './pipes/montant-total.pipe';
 
 
 @NgModule({
-  declarations: [TruncatePipe],
+  declarations: [TruncatePipe, MontantTotalPipe],
   imports: [
     CommonModule,
     NbLayoutModule,
@@ -29,7 +30,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     NbButtonModule,
     NbInputModule,
     NbFormFieldModule,
-    NbPopoverModule
+    NbPopoverModule,
+    NbSpinnerModule,
   ],
   exports: [
     NbLayoutModule,
@@ -42,7 +44,9 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     TruncatePipe,
     NbInputModule,
     NbFormFieldModule,
-    NbPopoverModule
+    NbPopoverModule,
+    NbSpinnerModule,
+    MontantTotalPipe,
   ]
 })
 export class SharedModule {

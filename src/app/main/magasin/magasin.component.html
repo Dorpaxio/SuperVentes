@@ -1,1 +1,10 @@
-<app-liste-produit [produits]="produits$ | async"></app-liste-produit>
+<ng-container *ngIf="(produits$ | async) as produits else spinner">
+  <h2>Produits ({{produits.length}})</h2>
+  <app-liste-produit [produits]="produits"></app-liste-produit>
+</ng-container>
+
+<ng-template #spinner>
+  <div class="w-100 d-flex justify-content-center">
+    <p class="spinner-border text-center"></p>
+  </div>
+</ng-template>

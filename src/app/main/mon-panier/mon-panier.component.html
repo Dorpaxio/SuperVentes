@@ -1,5 +1,7 @@
-<h2>Mon panier</h2>
-
+<div class="d-flex justify-content-between mb-2">
+  <h2>Mon panier</h2>
+  <button nbButton status="danger" hero size="small" (click)="deletePanier()">Vider mon pannier</button>
+</div>
 <nb-card>
   <nb-card-header class="row">
     <div class="col-md-2">Nom du produit</div>
@@ -7,14 +9,35 @@
     <div class="col-md-2">Catégorie</div>
     <div class="col-md-3">Description</div>
     <div class="col-md-1">Quantité</div>
-    <div class="col-md-2">Actions</div>
+    <div class="col-md-1">Actions</div>
+    <div class="col-md-1 text-right">Prix unité</div>
   </nb-card-header>
-  <nb-card-body *ngFor="let element of panier" class="row">
-    <div class="col-md-2">{{element.produit.nom | titlecase}}</div>
-    <div class="col-md-2">{{element.produit.type}}</div>
-    <div class="col-md-2">{{element.produit.categorie}}</div>
-    <div class="col-md-3">{{element.produit.description | truncate : 45}}</div>
-    <div class="col-md-1">{{element.quantity}}</div>
-    <div class="col-md-2">Actions</div>
+  <nb-card-body *ngIf="!isPanierSet else hasPanier" nbSpinner="true">
+    <p></p>
   </nb-card-body>
+  <ng-template #hasPanier>
+    <div *ngIf="!isPanierEmpty else emptyTemplate">
+      <nb-card-body class="row" *ngFor="let element of panier">
+        <div class="col-md-2 element">{{element.produit.nom | titlecase}}</div>
+        <div class="col-md-2 element">{{element.produit.type}}</div>
+        <div class="col-md-2 element">{{element.produit.categorie}}</div>
+        <div class="col-md-3 element">{{element.produit.description | truncate : 45}}</div>
+        <div class="col-md-1 element text-center">{{element.quantity}}</div>
+        <div class="col-md-1 element">
+          <button nbButton status="danger" ghost>
+            <nb-icon icon="trash-outline"></nb-icon>
+          </button>
+        </div>
+        <div class="col-md-1 font-weight-bold text-right element">{{element.produit.prix | currency : '€'}}</div>
+      </nb-card-body>
+    </div>
+    <ng-template #emptyTemplate>
+      <nb-card-body>
+        <p class="text-center mt-3">Votre panier est vide</p>
+      </nb-card-body>
+    </ng-template>
+  </ng-template>
+  <nb-card-footer>
+    <span class="total">Total : <span class="font-weight-bold">{{panier | montantTotal | currency : '€'}}</span></span>
+  </nb-card-footer>
 </nb-card>
