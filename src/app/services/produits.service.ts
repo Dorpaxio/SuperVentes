@@ -13,8 +13,8 @@ export class ProduitsService {
   constructor(private http: HttpClient) {
   }
 
-  getProduits(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(this.apiEndpoint);
+  getProduits(query?: {categorie?: string, sort?: string}): Observable<Produit[]> {
+    return this.http.get<Produit[]>(this.apiEndpoint, {params: query});
   }
 
   getCategories(): Observable<string[]> {

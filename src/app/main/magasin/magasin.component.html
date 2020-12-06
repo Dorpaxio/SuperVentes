@@ -1,5 +1,10 @@
 <ng-container *ngIf="(produits$ | async) as produits else spinner">
-  <h2>Produits ({{produits.length}})</h2>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Produits ({{produits.length}})</h2>
+    <nb-select [(ngModel)]="query.sort" (selectedChange)="updateProduits()" placeholder="Trier les résultats">
+      <nb-option *ngFor="let sort of sorting" [value]="sort.value">{{sort.display}}</nb-option>
+    </nb-select>
+  </div>
   <app-liste-produit [produits]="produits"></app-liste-produit>
 </ng-container>
 
