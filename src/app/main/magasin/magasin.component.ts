@@ -11,6 +11,7 @@ import Produit from '../../models/Produit';
 export class MagasinComponent implements OnInit {
 
   produits$: Observable<Produit[]>;
+  categories$: Observable<string[]>;
 
   sorting: { value: string, display: string }[] = [
     {value: 'nom', display: 'Alphanumérique croissant'},
@@ -27,9 +28,13 @@ export class MagasinComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateProduits();
+    this.categories$ = this.produitsService.getCategories();
   }
 
   updateProduits() {
+    if (!this.query.categorie) {
+      delete this.query.categorie;
+    }
     this.produits$ = this.produitsService.getProduits(this.query);
   }
 

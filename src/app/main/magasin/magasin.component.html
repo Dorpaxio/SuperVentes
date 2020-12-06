@@ -1,9 +1,16 @@
 <ng-container *ngIf="(produits$ | async) as produits else spinner">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Produits ({{produits.length}})</h2>
-    <nb-select [(ngModel)]="query.sort" (selectedChange)="updateProduits()" placeholder="Trier les résultats">
-      <nb-option *ngFor="let sort of sorting" [value]="sort.value">{{sort.display}}</nb-option>
-    </nb-select>
+    <div>
+      <nb-select class="mr-2" [(ngModel)]="query.categorie" (selectedChange)="updateProduits()"
+                 placeholder="Filtrer par catégorie">
+        <nb-option [value]="''">Aucun filtre</nb-option>
+        <nb-option *ngFor="let categorie of (categories$ | async)" [value]="categorie">{{categorie}}</nb-option>
+      </nb-select>
+      <nb-select [(ngModel)]="query.sort" (selectedChange)="updateProduits()" placeholder="Trier les résultats">
+        <nb-option *ngFor="let sort of sorting" [value]="sort.value">{{sort.display}}</nb-option>
+      </nb-select>
+    </div>
   </div>
   <app-liste-produit [produits]="produits"></app-liste-produit>
 </ng-container>

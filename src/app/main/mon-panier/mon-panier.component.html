@@ -5,9 +5,8 @@
 <nb-card>
   <nb-card-header class="row">
     <div class="col-md-2">Nom du produit</div>
-    <div class="col-md-2">Type</div>
     <div class="col-md-2">Catégorie</div>
-    <div class="col-md-3">Description</div>
+    <div class="col-md-5">Description</div>
     <div class="col-md-1">Quantité</div>
     <div class="col-md-1">Actions</div>
     <div class="col-md-1 text-right">Prix unité</div>
@@ -19,9 +18,8 @@
     <div *ngIf="!isPanierEmpty else emptyTemplate">
       <nb-card-body class="row" *ngFor="let element of panier">
         <div class="col-md-2 element">{{element.produit.nom | titlecase}}</div>
-        <div class="col-md-2 element">{{element.produit.type}}</div>
         <div class="col-md-2 element">{{element.produit.categorie}}</div>
-        <div class="col-md-3 element">{{element.produit.description | truncate : 45}}</div>
+        <div class="col-md-5 element">{{element.produit.description | truncate : 80}}</div>
         <div class="col-md-1 element text-center">{{element.quantity}}</div>
         <div class="col-md-1 element">
           <button nbButton status="danger" ghost>
