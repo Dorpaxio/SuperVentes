@@ -11,7 +11,7 @@ import Produit from '../../models/Produit';
 export class MagasinComponent implements OnInit {
 
   produits$: Observable<Produit[]>;
-  categories$: Observable<string[]>;
+  categories: string[];
 
   sorting: { value: string, display: string }[] = [
     {value: 'nom', display: 'Alphanumérique croissant'},
@@ -28,7 +28,7 @@ export class MagasinComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateProduits();
-    this.categories$ = this.produitsService.getCategories();
+    this.produitsService.getCategories().subscribe(categories => this.categories = categories);
   }
 
   updateProduits() {
