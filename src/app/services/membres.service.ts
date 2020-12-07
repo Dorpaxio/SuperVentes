@@ -2,7 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '@env/environment';
 import Membre from '../models/Membre';
-import {Observable, Subject} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import Produit from '../models/Produit';
 import {AuthService} from './auth.service';
 
@@ -23,16 +23,22 @@ export class MembresService {
   }
 
   getPanier(membre: Membre = this.authService.user): Observable<{ produit: string | Produit, quantity: number }[]> {
-    return this.http.get<{ produit: string | Produit, quantity: number }[]>(this.apiEndpoint + '/' + membre._id + '/panier');
+    if (membre) {
+      return this.http.get<{ produit: string | Produit, quantity: number }[]>(this.apiEndpoint + '/' + membre._id + '/panier');
+    } else {
+      return of([]);
+    }
   }
 
   addToPanier(produit: Produit, quantity = 1, membre: Membre = this.authService.user): Observable<any> {
-    return this.http.post<any>(this.apiEndpoint + '/' + membre._id + '/panier',
-      {
-        produitId: produit._id,
-        quantity
-      });
-    // POST `${endpoint}/${membre._id}/panier` {produitId, quantity} -> 204
+    if (this.authService.checkLogging()) {
+      return this.http.post<any>(this.apiEndpoint + '/' + membre._id + '/panier',
+        {
+          produitId: produit._id,
+          quantity
+        });
+    }
+    return of(null);
   }
 
   deleteOnePanier(membre: Membre = this.authService.user, produit: Produit): Observable<any> {

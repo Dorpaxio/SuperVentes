@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule } from '@nebular/theme';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
+import {httpInterceptorProviders} from './interceptors';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
     MainModule,
     AuthModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

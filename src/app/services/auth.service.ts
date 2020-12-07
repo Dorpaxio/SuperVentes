@@ -5,6 +5,8 @@ import {environment} from '@env/environment';
 import Membre from '../models/Membre';
 import * as moment from 'moment';
 import {map, tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {NbToastrService} from '@nebular/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<Membre>;
   public currentUser: Observable<Membre>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              private nbToastrService: NbToastrService) {
     this.currentUserSubject = new BehaviorSubject<Membre>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -74,5 +78,17 @@ export class AuthService {
         tap(data => this.setSession(data)),
         map(data => data.user)
       );
+  }
+
+  checkLogging(message?: string) {
+    if (this.isLoggedOut()) {
+      this.router.navigate(['/connexion']).then(() => {
+        this.nbToastrService
+          .danger(message || 'Veuillez vous connecter pour accéder à cette fonctionnalité.',
+          'Connexion requise');
+      });
+      return false;
+    }
+    return true;
   }
 }
