@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          script: cd /var/www/jesaispas/ && rm *.js *.ico *.css *.txt
+          script: cd /var/www/jesaispas/ && rm *.js *.ico *.css *.txt || true
       - name: Copy file via ssh key
         uses: appleboy/scp-action@master
         env:
