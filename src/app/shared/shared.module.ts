@@ -11,9 +11,8 @@ import {
   NbToggleModule
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
-import {HttpClientModule} from '@angular/common/http';
-import { TruncatePipe } from './pipes/truncate.pipe';
-import { MontantTotalPipe } from './pipes/montant-total.pipe';
+import {TruncatePipe} from './pipes/truncate.pipe';
+import {MontantTotalPipe} from './pipes/montant-total.pipe';
 import {FormsModule} from '@angular/forms';
 
 
@@ -25,7 +24,6 @@ import {FormsModule} from '@angular/forms';
     NbEvaIconsModule,
     NbToastrModule.forRoot({preventDuplicates: true}),
     NbCardModule,
-    HttpClientModule,
     NbToggleModule,
     NbIconModule,
     NbButtonModule,
@@ -40,7 +38,6 @@ import {FormsModule} from '@angular/forms';
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
-    HttpClientModule,
     NbToggleModule,
     NbIconModule,
     NbButtonModule,
