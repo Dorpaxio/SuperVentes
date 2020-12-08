@@ -44,7 +44,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.popover.show();
     clearTimeout(this.timer);
-    this.timer = setTimeout(() => {
+    this.timer = window.setTimeout(() => {
       this.popover.hide();
     }, 2000);
   }
