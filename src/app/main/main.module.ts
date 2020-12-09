@@ -14,7 +14,8 @@ import { MonPanierComponent } from './mon-panier/mon-panier.component';
     SharedModule,
     CommonModule,
     MainRoutingModule,
-    MagasinModule
+    MagasinModule,
+
   ]
 })
 export class MainModule {

@@ -1,0 +1,20 @@
+<h2 class="mb-2">Créer un nouveau produit</h2>
+<form [formGroup]="form" (ngSubmit)="addProduit()">
+  <nb-form-field class="w-50 mb-2">
+    <label>Nom du produit</label>
+      <input nbInput formControlName="nom" fullWidth>
+  </nb-form-field>
+  <nb-form-field class="w-50 mb-2">
+    <label>Catégorie</label>
+      <input nbInput formControlName="categorie" fullWidth>
+  </nb-form-field>
+  <nb-form-field class="w-50 mb-2">
+    <label>Description</label>
+    <textarea nbInput formControlName="description" fullWidth></textarea>
+  </nb-form-field>
+  <nb-form-field class="w-50 mb-2">
+    <label>Prix</label>
+    <input type="number" nbInput formControlName="prix" fullWidth>
+  </nb-form-field>
+  <button nbButton hero status="success" type="submit">Ajouter</button>
+</form>

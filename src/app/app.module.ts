@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({name: 'default'}),

@@ -3,11 +3,28 @@ import {ProduitsService} from '../../services/produits.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import Produit from '../../models/Produit';
 import {debounceTime, distinctUntilChanged, skip, tap} from 'rxjs/operators';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-magasin',
   templateUrl: './magasin.component.html',
-  styleUrls: ['./magasin.component.scss']
+  styleUrls: ['./magasin.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        left: '5px'
+      })),
+      state('closed', style({
+        left: '-30px'
+      })),
+      transition('open => closed', [
+        animate('100ms ease-out')
+      ]),
+      transition('closed => open', [
+        animate('100ms ease-out')
+      ]),
+    ]),
+  ]
 })
 export class MagasinComponent implements OnInit {
 
@@ -27,6 +44,8 @@ export class MagasinComponent implements OnInit {
   search$: Observable<string>;
 
   query: { categorie?: string, sort?: string, search?: string } = {};
+
+  plus = false;
 
   constructor(private produitsService: ProduitsService) {
     this.searchSubject = new BehaviorSubject<string>('');
@@ -69,6 +88,14 @@ export class MagasinComponent implements OnInit {
   removeFilter(): void {
     this.query = {};
     this.updateProduits();
+  }
+
+  openPlus() {
+    this.plus = true;
+  }
+
+  closePlus() {
+    this.plus = false;
   }
 
 }

@@ -4,6 +4,7 @@ import {MainComponent} from './main.component';
 import {MagasinComponent} from './magasin/magasin.component';
 import {AuthGuard} from '../guards/auth.guard';
 import {MonPanierComponent} from './mon-panier/mon-panier.component';
+import {NouveauProduitComponent} from './magasin/nouveau-produit/nouveau-produit.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {path: 'magasin', component: MagasinComponent},
+      {path: 'nouveau-produit', component: NouveauProduitComponent, canActivate: [AuthGuard]},
       {path: 'mon-panier', component: MonPanierComponent, canActivate: [AuthGuard]}
     ]
   },
