@@ -28,7 +28,7 @@
   </div>
 </div>
 <ng-container *ngIf="(produits$ | async) as produits else spinner">
-  <app-liste-produit [produits]="produits"></app-liste-produit>
+  <app-liste-produit [produits]="produits" [@listAnimation]="produits.length"></app-liste-produit>
 </ng-container>
 
 <ng-template #spinner>

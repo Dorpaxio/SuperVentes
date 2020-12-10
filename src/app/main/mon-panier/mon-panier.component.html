@@ -15,14 +15,22 @@
     <p></p>
   </nb-card-body>
   <ng-template #hasPanier>
-    <div *ngIf="!isPanierEmpty else emptyTemplate">
+    <div *ngIf="!isPanierEmpty else emptyTemplate" [@listAnimation]="panier.length">
       <nb-card-body class="row" *ngFor="let element of panier">
         <div class="col-md-2 element">{{element.produit.nom | titlecase}}</div>
         <div class="col-md-2 element">{{element.produit.categorie}}</div>
         <div class="col-md-5 element">{{element.produit.description | truncate : 80}}</div>
-        <div class="col-md-1 element text-center">{{element.quantity}}</div>
+        <div class="col-md-1 element text-center d-flex">
+          <button nbButton ghost (click)="decreaseProduitQuantity(element)">
+            <nb-icon [icon]="element.quantity | arrowIcon"></nb-icon>
+          </button>
+          {{element.quantity}}
+          <button nbButton ghost (click)="increaseProduitQuantity(element)">
+            <nb-icon icon="arrow-right-outline"></nb-icon>
+          </button>
+        </div>
         <div class="col-md-1 element">
-          <button nbButton status="danger" ghost>
+          <button nbButton status="danger" ghost (click)="deleteProduit(element)">
             <nb-icon icon="trash-outline"></nb-icon>
           </button>
         </div>
@@ -39,3 +47,4 @@
     <span class="total">Total : <span class="font-weight-bold">{{panier | montantTotal | currency : '€'}}</span></span>
   </nb-card-footer>
 </nb-card>
+<button nbButton hero status="success" class="float-right" size="large" (click)="deletePanier(true)">Procéder au paiement</button>
