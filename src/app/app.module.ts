@@ -18,7 +18,6 @@ import {RouterModule} from '@angular/router';
     HttpClientModule,
     RouterModule,
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({name: 'default'}),
