@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, CurrencyPipe} from '@angular/common';
 import {
   NbButtonModule,
   NbCardModule,
@@ -12,13 +12,14 @@ import {
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from '@angular/common/http';
-import { TruncatePipe } from './pipes/truncate.pipe';
-import { MontantTotalPipe } from './pipes/montant-total.pipe';
+import {TruncatePipe} from './pipes/truncate.pipe';
+import {MontantTotalPipe} from './pipes/montant-total.pipe';
 import {FormsModule} from '@angular/forms';
+import {ArrowIconPipe} from './pipes/arrow-icon.pipe';
 
 
 @NgModule({
-  declarations: [TruncatePipe, MontantTotalPipe],
+  declarations: [TruncatePipe, MontantTotalPipe, ArrowIconPipe],
   imports: [
     CommonModule,
     NbLayoutModule,
@@ -51,8 +52,10 @@ import {FormsModule} from '@angular/forms';
     NbSpinnerModule,
     MontantTotalPipe,
     NbSelectModule,
-    FormsModule
-  ]
+    FormsModule,
+    ArrowIconPipe
+  ],
+  providers: [MontantTotalPipe, CurrencyPipe]
 })
 export class SharedModule {
 }

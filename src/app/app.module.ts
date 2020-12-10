@@ -8,12 +8,14 @@ import { NbThemeModule } from '@nebular/theme';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import {httpInterceptorProviders} from './interceptors';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

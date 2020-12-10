@@ -12,7 +12,7 @@
       </nb-select>
     </div>
   </div>
-  <app-liste-produit [produits]="produits"></app-liste-produit>
+  <app-liste-produit [produits]="produits" [@listAnimation]="produits.length"></app-liste-produit>
 </ng-container>
 
 <ng-template #spinner>

@@ -5,11 +5,16 @@ import {NbToastrService} from '@nebular/theme';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import {ProduitsService} from '../../services/produits.service';
+import {MontantTotalPipe} from '../../shared/pipes/montant-total.pipe';
+import {CurrencyPipe} from '@angular/common';
+import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
+import listAnimation from '../../shared/animations/listAnimation';
 
 @Component({
   selector: 'app-mon-panier',
   templateUrl: './mon-panier.component.html',
-  styleUrls: ['./mon-panier.component.scss']
+  styleUrls: ['./mon-panier.component.scss'],
+  animations: [listAnimation]
 })
 export class MonPanierComponent implements OnInit {
 
@@ -17,7 +22,9 @@ export class MonPanierComponent implements OnInit {
 
   constructor(private membresService: MembresService,
               private nbToastrService: NbToastrService,
-              private produitsService: ProduitsService) {
+              private produitsService: ProduitsService,
+              private montantTotalPipe: MontantTotalPipe,
+              private currencyPipe: CurrencyPipe) {
   }
 
   ngOnInit(): void {
@@ -48,7 +55,7 @@ export class MonPanierComponent implements OnInit {
       });
   }
 
-  deletePanier() {
+  deletePanier(paiement: boolean = false) {
     this.membresService.deletePanier()
       .pipe(
         catchError(err => {
@@ -57,8 +64,14 @@ export class MonPanierComponent implements OnInit {
         })
       )
       .subscribe(() => {
+        if (paiement) {
+          const montant = this.currencyPipe.transform(this.montantTotalPipe.transform(this.panier), '€');
+          this.nbToastrService.success(`Vous êtes désormais pauvre car vous avez dépensé ${montant}.`,
+            'Opération réussie.');
+        } else {
+          this.nbToastrService.success('Votre panier a bien été vidé.', 'Panier vidé');
+        }
         this.panier = [];
-        this.nbToastrService.success('Votre panier a bien été vidé.', 'Panier vidé');
       });
   }
 
@@ -68,6 +81,30 @@ export class MonPanierComponent implements OnInit {
 
   get isPanierEmpty(): boolean {
     return this.panier.length === 0;
+  }
+
+  increaseProduitQuantity(element: { produit: Produit, quantity: number }): void {
+    this.membresService.addToPanier(element.produit).subscribe(() => {
+      element.quantity++;
+      this.panier = this.panier.map(el => el.produit._id === element.produit._id ? element : el);
+    });
+  }
+
+  decreaseProduitQuantity(element: { produit: Produit, quantity: number }): void {
+    this.membresService.addToPanier(element.produit, -1).subscribe(() => {
+      element.quantity--;
+      if (element.quantity === 0) {
+        this.panier = this.panier.filter(el => el.produit._id !== element.produit._id);
+      } else {
+        this.panier = this.panier.map(el => el.produit._id === element.produit._id ? element : el);
+      }
+    });
+  }
+
+  deleteProduit(element: { produit: Produit, quantity: number }): void {
+    this.membresService.addToPanier(element.produit, -element.quantity).subscribe(() => {
+      this.panier = this.panier.filter(el => el.produit._id !== element.produit._id);
+    });
   }
 
 }
