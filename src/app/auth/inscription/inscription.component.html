@@ -2,8 +2,12 @@
   <nb-layout-column class="d-flex justify-content-center align-items-center">
     <form class="w-100 d-flex justify-content-center" [formGroup]="form" (ngSubmit)="inscription()">
       <nb-card accent="primary" class="w-50">
-        <nb-card-header>
+        <nb-card-header class="d-flex justify-content-between align-items-center">
           <h2>Inscription</h2>
+          <a nbButton ghost routerLink="/">
+            <nb-icon icon="arrow-ios-back-outline"></nb-icon>
+            Revenir au magasin
+          </a>
         </nb-card-header>
         <nb-card-body>
           <label for="email">Email</label>

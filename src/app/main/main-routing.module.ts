@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: MainComponent,
     children: [
-      {path: 'magasin', component: MagasinComponent},
+      {path: '', component: MagasinComponent},
       {path: 'nouveau-produit', component: NouveauProduitComponent, canActivate: [AuthGuard]},
       {path: 'mon-panier', component: MonPanierComponent, canActivate: [AuthGuard]}
     ]

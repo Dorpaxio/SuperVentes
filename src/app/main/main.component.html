@@ -3,8 +3,7 @@
     <div class="d-flex justify-content-between w-100">
       <h1>SuperVentes</h1>
       <div class="d-flex align-items-center navigation">
-        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Acceuil</a>
-        <a routerLink="/magasin" routerLinkActive="active-link">Magasin</a>
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Magasin</a>
         <a routerLink="/connexion" *ngIf="!connected">Se connecter</a>
         <a routerLink="/mon-panier" *ngIf="connected" routerLinkActive="active-link"
            [routerLinkActiveOptions]="{exact: true}" [nbPopover]="popoverText" [nbPopoverPlacement]="'bottom'"
