@@ -36,7 +36,7 @@ export class NouveauProduitComponent implements OnInit {
         return throwError(err);
       })
     ).subscribe(produit => {
-      this.router.navigate(['/magasin'])
+      this.router.navigate(['/'])
         .then(() => this.nbToastrService.success(`Le produit "${produit.nom}" a été ajouté avec succès.`,
           'Produit ajouté'));
     });

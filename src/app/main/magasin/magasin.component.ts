@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import Produit from '../../models/Produit';
 import {debounceTime, distinctUntilChanged, skip, tap} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import listAnimation from '../../shared/animations/listAnimation';
 
 @Component({
   selector: 'app-magasin',
@@ -24,6 +25,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         animate('100ms ease-out')
       ]),
     ]),
+    listAnimation
   ]
 })
 export class MagasinComponent implements OnInit {

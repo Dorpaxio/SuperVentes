@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <h2 (mouseenter)="openPlus()" (mouseleave)="closePlus()">Produits
     <span class="badge badge-primary title">
-      {{nbProduits}}
+      {{nbProduits || 0}}
     </span>
     <button nbButton status="primary" class="add-btn" routerLink="/nouveau-produit"
             size="tiny" [@openClose]="plus ? 'open' : 'closed'">
@@ -28,7 +28,7 @@
   </div>
 </div>
 <ng-container *ngIf="(produits$ | async) as produits else spinner">
-  <app-liste-produit [produits]="produits"></app-liste-produit>
+  <app-liste-produit [produits]="produits" [@listAnimation]="produits.length"></app-liste-produit>
 </ng-container>
 
 <ng-template #spinner>

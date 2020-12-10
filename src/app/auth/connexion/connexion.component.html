@@ -2,8 +2,12 @@
   <nb-layout-column class="d-flex justify-content-center align-items-center">
     <form class="w-100 d-flex justify-content-center" [formGroup]="form" (ngSubmit)="connexion()">
       <nb-card accent="primary" class="w-50">
-        <nb-card-header>
+        <nb-card-header class="d-flex justify-content-between align-items-center">
           <h2>Connexion</h2>
+          <a nbButton ghost routerLink="/">
+            <nb-icon icon="arrow-ios-back-outline"></nb-icon>
+            Revenir au magasin
+          </a>
         </nb-card-header>
         <nb-card-body>
           <label for="email">Email</label>
@@ -26,7 +30,7 @@
           </nb-form-field>
         </nb-card-body>
         <nb-card-footer class="d-flex justify-content-between align-items-center">
-          <button nbButton hero status="primary" type="submit" >Connexion</button>
+          <button nbButton hero status="primary" type="submit">Connexion</button>
           <small>Vous n'avez pas de compte ? <a routerLink="/inscription">Inscrivez-vous</a></small>
         </nb-card-footer>
       </nb-card>
